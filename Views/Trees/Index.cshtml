@@ -1,0 +1,52 @@
+﻿@model OrchardManagement.Models.TreeIndexData
+@{
+    ViewData["Title"] = "Trees";
+}
+
+<h1>Trees</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Description
+            </th>
+            <th>
+                Age
+            </th>
+            <th>
+                Species
+            </th>
+            <th>Groups</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Trees)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Description)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Species.Description)
+                </td>
+                <td>
+                    @foreach (var group in item.TreeGroupTrees)
+                    {
+                        @group.TreeGroups.Name <br />
+                    }
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

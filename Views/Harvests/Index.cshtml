@@ -1,0 +1,53 @@
+﻿@model IEnumerable<OrchardManagement.Models.Harvest>
+
+@{
+    ViewData["Title"] = "Harvests";
+}
+
+<h1>Harvest</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Information)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GrossWeight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Trees)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Information)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GrossWeight)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Trees.Description)
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
