@@ -22,24 +22,6 @@ namespace OrchardManagement.Controllers
             return View(await _context.TreeGroup.OrderBy(tg => tg.Name).ToListAsync());
         }
 
-        // GET: TreeGroupTrees/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var treeGroup = await _context.TreeGroup
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (treeGroup == null)
-            {
-                return NotFound();
-            }
-
-            return View(treeGroup);
-        }
-
         // GET: TreeGroupTrees/Create
         public IActionResult Create()
         {

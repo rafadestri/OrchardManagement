@@ -25,24 +25,6 @@ namespace OrchardManagement.Controllers
             return View(await _context.Species.OrderBy(s => s.Description).ToListAsync());
         }
 
-        // GET: Species/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var species = await _context.Species
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (species == null)
-            {
-                return NotFound();
-            }
-
-            return View(species);
-        }
-
         // GET: Species/Create
         public IActionResult Create()
         {
@@ -144,7 +126,6 @@ namespace OrchardManagement.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
         private bool SpeciesExists(int id)
         {
             return _context.Species.Any(e => e.ID == id);

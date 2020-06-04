@@ -26,25 +26,6 @@ namespace OrchardManagement.Controllers
             return View(await orchardContext.ToListAsync());
         }
 
-        // GET: Harvests/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var harvest = await _context.Harvest
-                .Include(h => h.Trees)
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (harvest == null)
-            {
-                return NotFound();
-            }
-
-            return View(harvest);
-        }
-
         // GET: Harvests/Create
         public IActionResult Create()
         {
